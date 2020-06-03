@@ -1,0 +1,20 @@
+<div class="search_box">
+  <h1>楽天検索</h1>
+  <%= form_with url:goods_search_path, method: :get, local: true do |f|%>
+    <div class="form_group">
+      <%= f.text_field :keyword, class: "form_control"%>
+      <%= f.submit "検索", class: "form_control"%>
+    </div>
+  <% end %>
+
+  <% if @items.present? %>
+    <% @items.each do |item| %>
+      <p><%= item.catchcopy %></p>
+      <p><%= item.price %>円</p>
+      <p><%= item.small_image_urls %></p>
+      <img src="small_image_urls">
+      <%= link_to item.url %>
+    <% end %>
+  <% end %>
+
+</div>
